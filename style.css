@@ -58,7 +58,7 @@ body {
 #ul_div {
     max-height: 350px;
     margin: auto;
-    overflow-y : hidden;
+    overflow : hidden;
 }
 
 ul {

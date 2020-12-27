@@ -3,7 +3,7 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
-}, false);
+});
 
 var deleteAll = document.getElementById("deleteAll");
 deleteAll.addEventListener('click',function() {
@@ -33,16 +33,17 @@ function handleClick() {
     cross.className = "close";
     li.appendChild(cross);
 
-    cross.onclick = function() {
-        removeItem(cross);
-        checkScroll();
-    }
+    cross.addEventListener("click",removeItem);
     checkScroll();
 }
 
-function removeItem(cross) {
-    cross.parentElement.className = "removed-item";
-    setTimeout(function(){document.getElementById("myUL").removeChild(cross.parentElement);}, 500);
+function removeItem(event) {
+    if(event.target.tagName=="I")
+    {
+        event.target.parentElement.parentElement.className = "removed-item";
+        setTimeout(function(){document.getElementById("myUL").removeChild(event.target.parentElement.parentElement);}, 500);
+        checkScroll();
+    }
 }
 
 function checkScroll() {
